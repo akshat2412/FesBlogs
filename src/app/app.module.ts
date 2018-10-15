@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TagboxComponent } from './tagbox/tagbox.component';
 import { TagButtonComponent } from './tag-button/tag-button.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { UserProfileLinkComponent } from './user-profile-link/user-profile-link.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PaginationComponent } from './pagination/pagination.component';
     ArticleListItemComponent,
     TagboxComponent,
     TagButtonComponent,
-    PaginationComponent
+    PaginationComponent,
+    UserProfileLinkComponent
   ],
   imports: [
     BrowserModule,
