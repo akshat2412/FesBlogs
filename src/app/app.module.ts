@@ -6,13 +6,19 @@ import { HeaderComponent } from './header/header.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleListItemComponent } from './article-list-item/article-list-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TagboxComponent } from './tagbox/tagbox.component';
+import { TagButtonComponent } from './tag-button/tag-button.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ArticleListComponent,
-    ArticleListItemComponent
+    ArticleListItemComponent,
+    TagboxComponent,
+    TagButtonComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
