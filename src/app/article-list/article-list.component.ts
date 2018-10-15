@@ -13,7 +13,7 @@ export class ArticleListComponent implements OnInit {
 
   ngOnInit() {
     console.log('initialized');
-    this.apiService.getData()
+    this.apiService.getArticles()
       .subscribe((data) => this.articles = data['articles']);
       console.log(this.articles);
   }
