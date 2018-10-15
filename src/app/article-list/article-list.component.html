@@ -1,21 +1,6 @@
-<div class="padding">
-  <div class="container">
-      <div class="row">
-          <div class="col-sm-10">
-              <div class="list-posts" *ngFor = "let article of articles">
-                  <app-article-list-item [articleData] = "article"></app-article-list-item>
-              </div><!-- /.list-posts -->
 
-              <nav class="pagination pagination-02">
-                  <ul>
-                      <li class="hidden"><a href="#" aria-label="Previous">Previous</a></li>
-                      <li class="active"><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#" aria-label="Next">Next</a></li>
-                  </ul>
-              </nav><!-- /.pagination -->
-          </div>
-      </div><!-- /.row -->
-  </div><!-- /.container -->
-</div>
+<div class="list-posts" *ngFor = "let article of articles">
+    <app-article-list-item [articleData] = "article"></app-article-list-item>
+</div><!-- /.list-posts -->
+
+          
