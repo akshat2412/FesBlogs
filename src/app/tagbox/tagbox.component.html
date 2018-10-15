@@ -1,13 +1,6 @@
 <div class="widget widget_insta_feed">
   <h3 class="widget-title">Popular Tags</h3><!-- /.widget-title -->
   <div class="widget-details">
-    <app-tag-button Text = "akshat"></app-tag-button>
-    <app-tag-button Text = "afd"></app-tag-button>
-    <app-tag-button Text = "afdasdfdsa"></app-tag-button>
-    <app-tag-button Text = "afdsd"></app-tag-button>
-    <app-tag-button Text = "afdsasdfsdfd"></app-tag-button>
-    <app-tag-button Text = "sd"></app-tag-button>
-    <app-tag-button Text = "afsdfdsd"></app-tag-button>
-    <app-tag-button Text = "afadsfdsd"></app-tag-button>
+    <app-tag-button *ngFor = "let tag of tags" [Text] = "tag"></app-tag-button>
   </div><!-- /.widget-details -->
 </div><!-- /.widget -->

@@ -6,10 +6,14 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  url = 'https://conduit.productionready.io/api/articles';
+  url = 'https://conduit.productionready.io/api/';
   constructor(private http: HttpClient) { }
 
-  getData() {
-    return this.http.get(this.url);
+  getArticles() {
+    return this.http.get(this.url + 'articles');
+  }
+
+  getTags() {
+    return this.http.get(this.url + 'tags');
   }
 }
