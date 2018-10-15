@@ -12,7 +12,6 @@ export class ArticleListComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    console.log('initialized');
     this.apiService.getArticles()
       .subscribe((data) => this.articles = data['articles']);
       console.log(this.articles);

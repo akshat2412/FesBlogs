@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IArticle } from 'src/Models/IArticle';
 
 @Component({
   selector: 'app-article-list-item',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./article-list-item.component.css']
 })
 export class ArticleListItemComponent implements OnInit {
-  @Input() articleData: Object;
+  @Input() articleData: IArticle;
   constructor() { }
 
   ngOnInit() {
