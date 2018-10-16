@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { IArticle } from 'src/Models/IArticle';
 
 @Component({
   selector: 'app-article-list',
@@ -8,7 +9,7 @@ import { ApiService } from '../api.service';
 })
 export class ArticleListComponent implements OnInit {
 
-  articles: Object[];
+  articles: IArticle[];
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
