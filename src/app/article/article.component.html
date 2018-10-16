@@ -1,0 +1,27 @@
+<section class="main-content">
+    <div class="padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-offset-2">
+                    <div class="single-post">
+                        <div class="type-standard">
+                            <article class="post type-post">
+                                <div class="top-content text-center">
+                                    <h2 class="entry-title">{{articleData?.title}}</h2><!-- /.entry-title -->
+                                    <span class="time"><time datetime="2017-12-05">{{articleData?.updatedAt | date}}</time></span><!-- /.time -->
+                                </div><!-- /.top-content --> 
+
+                                <div class="entry-thumbnail">By: <app-user-profile-link [User] = "articleData.author"></app-user-profile-link></div><!-- /.entry-thumbnail -->
+
+                                <div class="entry-content">
+                                    <p>{{articleData.body}}</p>
+                                </div><!-- /.entry-content -->
+                            </article><!-- /.post -->
+                        </div><!-- /.type-standard -->
+                    </div><!-- /.single-post -->
+                </div>
+
+            </div>
+        </div><!-- /.container -->
+    </div><!-- /.padding -->
+</section><!-- /.main-content -->
