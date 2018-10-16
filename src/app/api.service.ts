@@ -16,4 +16,8 @@ export class ApiService {
   getTags() {
     return this.http.get(this.url + 'tags');
   }
+
+  getArticle(slug: string) {
+    return this.http.get(`${this.url}/articles/${slug}`);
+  }
 }
