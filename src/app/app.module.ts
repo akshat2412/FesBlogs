@@ -10,6 +10,31 @@ import { TagboxComponent } from './tagbox/tagbox.component';
 import { TagButtonComponent } from './tag-button/tag-button.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { UserProfileLinkComponent } from './user-profile-link/user-profile-link.component';
+import {RouterModule, Routes} from '@angular/router';
+import { LandingComponent } from './landing/landing.component';
+import { ArticleComponent } from './article/article.component';
+import { PageDoesNotExistsComponent } from './page-does-not-exists/page-does-not-exists.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: LandingComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'pagination',
+    component: PaginationComponent
+  },
+  {
+    path: 'article/:slug',
+    component: ArticleComponent
+  },
+  {
+    path: '404',
+    component: PageDoesNotExistsComponent
+  },
+  // { path: '**', component: PageNotFoundComponent }
+];
 
 @NgModule({
   declarations: [
@@ -20,11 +45,15 @@ import { UserProfileLinkComponent } from './user-profile-link/user-profile-link.
     TagboxComponent,
     TagButtonComponent,
     PaginationComponent,
-    UserProfileLinkComponent
+    UserProfileLinkComponent,
+    LandingComponent,
+    ArticleComponent,
+    PageDoesNotExistsComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
