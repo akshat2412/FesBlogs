@@ -12,11 +12,10 @@ export class ArticleComponent implements OnInit {
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    // this.apiService.getArticle(this.route.snapshot.params['slug'])
-    //   .subscribe(
-    //     (data) => this.articleData = data['article'],
-    //     (error) => this.router.navigate(['/404'])
-    //   );
-    this.articleData = this.route.snapshot.data[`articleObject['article']`];
+    this.apiService.getArticle(this.route.snapshot.params['slug'])
+      .subscribe(
+        (data) => this.articleData = data['article'],
+        (error) => this.router.navigate(['/404'])
+      );
   }
 }
