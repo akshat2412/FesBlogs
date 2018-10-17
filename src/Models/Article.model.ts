@@ -1,4 +1,4 @@
-import { IAuthor } from './IAuthor';
+import { IAuthor } from './Author.model';
 
 export interface IArticle {
     slug: string;
