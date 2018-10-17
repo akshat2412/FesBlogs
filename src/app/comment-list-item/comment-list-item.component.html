@@ -1,0 +1,12 @@
+<li class="comment parent media">
+  <div class="author-avatar media-left pull-left">
+      <img class="img-circle" src="http://demos-jeweltheme.ipunu91y.maxcdn-edge.com/sasha/images/single/c4.jpg" alt="Avatar">
+  </div><!-- /.author-avatar -->
+  <div class="comment-details media-body">
+      <app-user-profile-link [User] = "CommentData.author"></app-user-profile-link>
+      <p>
+          {{CommentData.body}}
+      </p>
+      <time>{{CommentData.createdAt | date}}</time>
+  </div><!-- /.comment-details -->
+</li><!-- /.comment -->

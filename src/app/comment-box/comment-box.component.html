@@ -1,0 +1,8 @@
+<div *ngIf = "CommentsData?.length > 0" class="comments text-center" >
+
+  <h3 class="comment-title" *ngIf = "CommentsData.length == 1; else multipleComments">{{CommentsData.length}} Comment</h3><!-- /.comment-title -->
+  <ng-template><h3 class="comment-title" #multipleComments>{{CommentsData.length}} Comments</h3></ng-template>
+  <ul class="comment-list">
+    <app-comment-list-item *ngFor = "let Comment of CommentsData" [CommentData] = "Comment"></app-comment-list-item>
+  </ul><!-- /.comment-list -->
+</div><!-- /.comments -->
