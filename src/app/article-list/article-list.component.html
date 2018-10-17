@@ -1,6 +1,7 @@
 
 <div *ngIf = "articles; else alternative" class="list-posts">
     <app-article-list-item *ngFor = "let article of articles" [articleData] = "article"></app-article-list-item>
+    <app-pagination [pageNumber] = "pageNumber"></app-pagination>
 </div><!-- /.list-posts -->
 <ng-template #alternative> <p>Loading Articles</p></ng-template>
 
