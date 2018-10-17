@@ -1,6 +1,6 @@
 import { LandingComponent } from './landing/landing.component';
 import { PaginationComponent } from './pagination/pagination.component';
-import { ArticleComponent } from './article/article.component';
+import { ArticleViewComponent } from './article-view/article-view.component';
 import { PageDoesNotExistsComponent } from './page-does-not-exists/page-does-not-exists.component';
 import { Routes } from '@angular/router';
 
@@ -16,7 +16,7 @@ export const routes: Routes = [
     },
     {
       path: 'article/:slug',
-      component: ArticleComponent,
+      component: ArticleViewComponent,
     },
     {
       path: '404',
