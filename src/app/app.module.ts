@@ -16,6 +16,9 @@ import { ArticleComponent } from './article/article.component';
 import { PageDoesNotExistsComponent } from './page-does-not-exists/page-does-not-exists.component';
 import { CommonModule } from '@angular/common';
 import { routes } from './routes';
+import { CommentBoxComponent } from './comment-box/comment-box.component';
+import { CommentListItemComponent } from './comment-list-item/comment-list-item.component';
+import { ArticleViewComponent } from './article-view/article-view.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { routes } from './routes';
     UserProfileLinkComponent,
     LandingComponent,
     ArticleComponent,
-    PageDoesNotExistsComponent
+    PageDoesNotExistsComponent,
+    CommentBoxComponent,
+    CommentListItemComponent,
+    ArticleViewComponent
   ],
   imports: [
     BrowserModule,
