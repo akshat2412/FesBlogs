@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { IArticle } from 'src/Models/IArticle';
+import { IArticle } from 'src/Models/Article.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class ArticleListComponent implements OnInit {
 
   articles: IArticle[];
+  pageNumber: Number = 1;
   constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {

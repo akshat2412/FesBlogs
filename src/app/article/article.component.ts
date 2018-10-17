@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { IArticle } from 'src/Models/IArticle';
+import { IArticle } from 'src/Models/Article.model';
 import {Router, ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-article',
