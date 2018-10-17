@@ -3,6 +3,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { ArticleComponent } from './article/article.component';
 import { PageDoesNotExistsComponent } from './page-does-not-exists/page-does-not-exists.component';
 import { Routes } from '@angular/router';
+import { ArticleResolverService } from './article-resolver.service';
 
 export const routes: Routes = [
     {
@@ -12,11 +13,13 @@ export const routes: Routes = [
     },
     {
       path: 'pagination',
-      component: PaginationComponent
+      component: PaginationComponent,
     },
     {
       path: 'article/:slug',
-      component: ArticleComponent
+      component: ArticleComponent,
+      resolve: {articleObject: ArticleResolverService},
+      data: {slug: 'slug'}
     },
     {
       path: '404',
