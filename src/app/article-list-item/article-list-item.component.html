@@ -13,7 +13,7 @@
             {{articleData.description}}    
           </p>
     
-          <a href="standard.html" class="btn">Read more</a><!-- /.btn -->
+          <a [routerLink] = "['/article', articleData.slug]" class="btn">Read more</a><!-- /.btn -->
       </div><!-- /.entry-content -->
     </div>
   </div>
