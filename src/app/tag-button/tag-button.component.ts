@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-tag-button',
   templateUrl: './tag-button.component.html',
@@ -7,9 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TagButtonComponent implements OnInit {
   @Input() Text: string;
-  constructor() { }
+  @Output() ClickedButton = new EventEmitter();
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  clicked(tag) {
+    this.ClickedButton.emit(tag);
+  }
 }
