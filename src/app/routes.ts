@@ -2,6 +2,7 @@ import { LandingComponent } from './landing/landing.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ArticleViewComponent } from './article-view/article-view.component';
 import { PageDoesNotExistsComponent } from './page-does-not-exists/page-does-not-exists.component';
+import { TaggedArticlesLandingComponent } from './tagged-articles-landing/tagged-articles-landing.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -11,8 +12,9 @@ export const routes: Routes = [
       pathMatch: 'full'
     },
     {
-      path: 'pagination',
-      component: PaginationComponent,
+      path: 'articles/:tag',
+      component: TaggedArticlesLandingComponent,
+      pathMatch: 'full'
     },
     {
       path: 'article/:slug',
