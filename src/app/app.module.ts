@@ -19,7 +19,7 @@ import { routes } from './routes';
 import { CommentBoxComponent } from './comment-box/comment-box.component';
 import { CommentListItemComponent } from './comment-list-item/comment-list-item.component';
 import { ArticleViewComponent } from './article-view/article-view.component';
-
+import { TaggedArticlesLandingComponent } from './tagged-articles-landing/tagged-articles-landing.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +35,8 @@ import { ArticleViewComponent } from './article-view/article-view.component';
     PageDoesNotExistsComponent,
     CommentBoxComponent,
     CommentListItemComponent,
-    ArticleViewComponent
+    ArticleViewComponent,
+    TaggedArticlesLandingComponent,
   ],
   imports: [
     BrowserModule,
