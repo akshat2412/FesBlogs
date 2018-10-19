@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
+
+import { ApiService } from '../Services/api.service';
 import { IArticle } from 'src/Models/Article.model';
 import {Router, ActivatedRoute} from '@angular/router';
 @Component({
@@ -14,7 +15,7 @@ export class ArticleComponent implements OnInit {
   ngOnInit() {
     this.apiService.getArticle(this.route.snapshot.params['slug'])
       .subscribe(
-        (data) => this.articleData = data['article'],
+        (data) => this.articleData = Object.assign({}, data['article']),
         (error) => this.router.navigate(['/404'])
       );
   }

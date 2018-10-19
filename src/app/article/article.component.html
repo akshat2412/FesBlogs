@@ -11,7 +11,7 @@
                                     <span class="time"><time>{{articleData?.updatedAt | date}}</time></span><!-- /.time -->
                                 </div><!-- /.top-content --> 
 
-                                <div class="entry-thumbnail">By: <app-user-profile-link [User] = "articleData.author"></app-user-profile-link></div><!-- /.entry-thumbnail -->
+                                <div class="entry-thumbnail">By: <app-user-profile-link [user] = "articleData.author"></app-user-profile-link></div><!-- /.entry-thumbnail -->
 
                                 <div class="entry-content">
                                     <p>{{articleData?.body}}</p>

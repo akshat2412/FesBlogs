@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { IComment } from 'src/Models/Comment.model';
 
 @Component({
@@ -7,7 +8,7 @@ import { IComment } from 'src/Models/Comment.model';
   styleUrls: ['./comment-list-item.component.css']
 })
 export class CommentListItemComponent implements OnInit {
-  @Input() CommentData: IComment;
+  @Input() commentData: IComment;
   constructor() { }
 
   ngOnInit() {

@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./tag-button.component.css']
 })
 export class TagButtonComponent implements OnInit {
-  @Input() Text: string;
-  @Output() ClickedButton = new EventEmitter();
+  @Input() text: string;
+  @Output() clickedButton = new EventEmitter();
 
   constructor(private router: Router) { }
 
@@ -15,6 +15,6 @@ export class TagButtonComponent implements OnInit {
   }
 
   clicked(tag) {
-    this.ClickedButton.emit(tag);
+    this.clickedButton.emit(tag);
   }
 }

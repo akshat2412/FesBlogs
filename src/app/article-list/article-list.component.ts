@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges,  } from '@angular/core';
-import { ApiService } from '../api.service';
-import { IArticle } from 'src/Models/Article.model';
 import { Router } from '@angular/router';
+
+import { ApiService } from '../Services/api.service';
+import { IArticle } from 'src/Models/Article.model';
 
 @Component({
   selector: 'app-article-list',
@@ -10,16 +11,16 @@ import { Router } from '@angular/router';
 })
 export class ArticleListComponent implements OnInit, OnChanges {
 
+  @Input() selectedTag: string = null;
   articles: IArticle[];
   pageNumber: Number = 1;
-  @Input() SelectedTag: string = null;
   constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
-    if ( !!this.SelectedTag ) {
-      this.apiService.getArticlesByTag(this.SelectedTag)
+    if ( !!this.selectedTag ) {
+      this.apiService.getArticlesByTag(this.selectedTag)
         .subscribe(
-          (data) => this.articles = data['articles'],
+          (data) => this.articles = data['articles'].slice(),
           (error) => this.router.navigate(['/404'])
         );
     } else {
@@ -33,8 +34,8 @@ export class ArticleListComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     this.articles = null;
-    if ( !!this.SelectedTag ) {
-      this.apiService.getArticlesByTag(this.SelectedTag)
+    if ( !!this.selectedTag ) {
+      this.apiService.getArticlesByTag(this.selectedTag)
         .subscribe(
           (data) => this.articles = data['articles'],
           (error) => this.router.navigate(['/404'])

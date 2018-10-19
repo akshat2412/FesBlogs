@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { IArticle } from 'src/Models/Article.model';
 
 @Component({

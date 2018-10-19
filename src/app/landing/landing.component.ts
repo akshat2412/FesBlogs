@@ -11,7 +11,7 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
   }
 
-  HandleTagClick(ClickedTag: string) {
-    this.router.navigate(['/articles', ClickedTag]);
+  HandleTagClick(clickedTag: string) {
+    this.router.navigate(['/articles', clickedTag]);
   }
 }
