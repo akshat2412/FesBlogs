@@ -7,15 +7,15 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./tagged-articles-landing.component.css']
 })
 export class TaggedArticlesLandingComponent implements OnInit {
-  SelectedTag: string;
+  selectedTag: string;
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.SelectedTag = this.route.snapshot.params['tag'];
+    this.selectedTag = this.route.snapshot.params['tag'];
   }
 
   HandleTagClick(tag: string) {
-    this.SelectedTag = tag;
+    this.selectedTag = tag;
     this.router.navigate(['/articles', tag]);
   }
 

@@ -7,7 +7,7 @@
       <div class="entry-content media-body">
           <!-- <span class="category"><a href="categories.html">Lifestyle</a></span>/.category -->
           <h2 class="entry-title"><a [routerLink]="['/article', articleData.slug]">{{articleData.title}}</a></h2><!-- /.entry-title -->
-          <div><app-user-profile-link [User] = "articleData.author"></app-user-profile-link></div>
+          <div><app-user-profile-link [user] = "articleData.author"></app-user-profile-link></div>
           <span class="time"><time datetime="2017-12-05">{{articleData.createdAt | date}}</time></span><!-- /.time -->
           <p>
             {{articleData.description}}    
