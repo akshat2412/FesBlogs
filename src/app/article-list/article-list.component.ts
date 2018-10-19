@@ -20,7 +20,7 @@ export class ArticleListComponent implements OnInit, OnChanges {
     if ( !!this.selectedTag ) {
       this.apiService.getArticlesByTag(this.selectedTag)
         .subscribe(
-          (data) => this.articles = data['articles'],
+          (data) => this.articles = data['articles'].slice(),
           (error) => this.router.navigate(['/404'])
         );
     } else {

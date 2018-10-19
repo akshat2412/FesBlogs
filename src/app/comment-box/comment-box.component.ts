@@ -14,7 +14,7 @@ export class CommentBoxComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.getComments(this.route.snapshot.params['slug'])
-      .subscribe((data) => this.commentsData = data['comments']);
+      .subscribe((data) => this.commentsData = data['comments'].slice());
   }
 
 }

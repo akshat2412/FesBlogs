@@ -15,7 +15,7 @@ export class ArticleComponent implements OnInit {
   ngOnInit() {
     this.apiService.getArticle(this.route.snapshot.params['slug'])
       .subscribe(
-        (data) => this.articleData = data['article'],
+        (data) => this.articleData = Object.assign({}, data['article']),
         (error) => this.router.navigate(['/404'])
       );
   }

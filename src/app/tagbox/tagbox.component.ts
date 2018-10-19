@@ -15,7 +15,7 @@ export class TagboxComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.getTags()
-      .subscribe((data) => this.tags = data['tags']);
+      .subscribe((data) => this.tags = data['tags'].slice());
   }
 
   EmitClickedButton(tag: string) {
