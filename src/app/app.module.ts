@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { CommentBoxComponent } from './comment-box/comment-box.component';
 import { CommentListItemComponent } from './comment-list-item/comment-list-item.component';
 import { ArticleViewComponent } from './article-view/article-view.component';
 import { TaggedArticlesLandingComponent } from './tagged-articles-landing/tagged-articles-landing.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,12 +39,14 @@ import { TaggedArticlesLandingComponent } from './tagged-articles-landing/tagged
     CommentListItemComponent,
     ArticleViewComponent,
     TaggedArticlesLandingComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
