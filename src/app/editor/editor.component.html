@@ -1,0 +1,59 @@
+<div class="padding">
+    <div class="container">
+        <div class="respond text-center">
+            <h1>Write an article</h1>
+            <form #articleForm = "ngForm" (ngSubmit) = "publishArticle(articleForm.value)" class="comment-form">
+                <!-- <div class="row mt20" *ngIf = "errorList?.length > 0">
+                  <div class="col-md-4 col-md-offset-4">
+                    <ul>
+                      <li *ngFor = "let errorMessage of errorList" class="errormessage">{{errorMessage}}</li>
+                    </ul>
+                  </div>
+        
+                </div> -->
+                <div class="row mt20">
+                    <div class="col-md-10 col-md-offset-1">
+                        <span class="comment-form-control-wrap email editor-input-container">
+                            <label for="username">Article Title</label>
+                            <!-- <em *ngIf = "signupForm.controls.username?.invalid && (signupForm.controls.username?.touched || showValidationMessages)">Required</em> -->
+                            <input (ngModel) = "title" type="title" name="title" id="title" class="comment-form-control editor-input" required>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <span class="comment-form-control-wrap email editor-input-container">
+                            <label for="description">What's this article about?</label>
+                            <!-- <em *ngIf = "signupForm.controls.username?.invalid && (signupForm.controls.username?.touched || showValidationMessages)">Required</em> -->
+                            <input (ngModel) = "description" type="description" name="description" id="description" class="comment-form-control editor-input" required>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-10 col-md-offset-1">
+                    <span class="wpcf7-form-control-wrap message">
+                      <label for="body">Write you article (in markdown)</label>
+                      <textarea (ngModel) = "body" name="body" id="body" class="wpcf7-form-control editor-input" required></textarea>
+                    </span>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <span class="comment-form-control-wrap email editor-input-container">
+                            <label for="tags">Enter Tags</label>
+                            <!-- <em *ngIf = "signupForm.controls.username?.invalid && (signupForm.controls.username?.touched || showValidationMessages)">Required</em> -->
+                            <input (ngModel) = "tags" type="tags" name="tags" id="tags" class="comment-form-control editor-input">
+                        </span>
+                    </div>
+                </div>
+                <div class="row mt20">
+                    <div class="col-md-12">
+                        <span class="comment-form-control-wrap submit" (mouseenter) = "showValidationMessages = true" (mouseleave) = "showValidationMessages = false">
+                            <input type="submit" name="submit" id="submit" class="comment-form-control" value="Publish Article" [disabled] = "articleForm.invalid">
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div><!-- /.respond -->
+    </div>
+</div>

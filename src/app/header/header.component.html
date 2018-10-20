@@ -32,7 +32,7 @@
                         <a [routerLink] = "['/signup']">Sign Up</a>
                       </li>
                       <li *ngIf = "loggedIn">
-                        <a href="">New Article</a>
+                        <a [routerLink] = "['/editor']">New Article</a>
                       </li>
                       <li *ngIf = "loggedIn">
                         <a href="">Settings</a>

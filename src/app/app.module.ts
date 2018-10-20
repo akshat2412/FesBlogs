@@ -23,6 +23,7 @@ import { ArticleViewComponent } from './article-view/article-view.component';
 import { TaggedArticlesLandingComponent } from './tagged-articles-landing/tagged-articles-landing.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { EditorComponent } from './editor/editor.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { SignupComponent } from './signup/signup.component';
     TaggedArticlesLandingComponent,
     LoginComponent,
     SignupComponent,
+    EditorComponent,
   ],
   imports: [
     BrowserModule,

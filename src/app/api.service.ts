@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpParams } from '@angular/common/http';
+import { HttpParams, HttpHeaders } from '@angular/common/http';
 
 import { IUser } from '../Models/User.model';
 
@@ -66,5 +66,19 @@ export class ApiService {
       return this.currentUser.username;
     }
     return null;
+  }
+
+  publishArticle(title: string, description: string, body: string, tags?: string) {
+    let tagList: string[];
+    if ( !!tags ) {
+      tagList = tags.split(' ');
+    }
+    let articlePostObject = Object.assign({}, {article: {title, description, body}});
+    if ( tagList && tagList.length > 0) {
+      articlePostObject = Object.assign({}, {article: {title, description, body, tagList}});
+    }
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                               .set('Authorization', 'Token ' + localStorage.getItem('token'));
+    return this.http.post(this.url + '/articles', articlePostObject, {headers: headers});
   }
 }
