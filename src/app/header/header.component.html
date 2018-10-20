@@ -28,9 +28,19 @@
                       <li *ngIf = "!isLoggedIn()" class="menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                           <a [routerLink] = "['/login']">Sign In</a>
                       </li>
-                      <li *ngIf = "!isLoggedIn()" class="menu-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                        <a [routerLink] = "['/login']">Sign Up</a>
+                      <li *ngIf = "!loggedIn" class="menu-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <a [routerLink] = "['/signup']">Sign Up</a>
                       </li>
+                      <li *ngIf = "loggedIn">
+                        <a href="">New Article</a>
+                      </li>
+                      <li *ngIf = "loggedIn">
+                        <a href="">Settings</a>
+                      </li>
+                      <li *ngIf = "loggedIn">
+                        <a href="">{{userName}}</a>
+                      </li>
+
                   </ul><!-- /.navbar-nav -->
               </div><!-- /.navbar-collapse -->
           </nav>

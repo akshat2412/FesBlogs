@@ -7,13 +7,19 @@ import { ApiService } from '../api.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  loggedIn: Boolean = false;
+  userName: string;
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
   }
 
   isLoggedIn(): Boolean {
-    return this.apiService.isLoggedIn();
+    if ( this.apiService.isLoggedIn()) {
+      this.loggedIn = true;
+      this.userName = this.apiService.getUserName();
+      return true;
+    }
+    return false;
   }
 }
