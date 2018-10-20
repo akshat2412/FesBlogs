@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from './api.service';
 @Component({
@@ -6,11 +6,12 @@ import { ApiService } from './api.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnInit {
   title = 'FesBlogs';
 
   constructor(private apiService: ApiService) {}
-  ngOnDestroy() {
+  ngOnInit() {
     this.apiService.clearUser();
+    console.log('user cleared');
   }
 }
