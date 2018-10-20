@@ -3,12 +3,3 @@
     font-weight: 600;
     list-style: none;
 }
-input[disabled]{
-    cursor: not-allowed;
-}
-
-em {
-    float: right;
-    color: red;
-    display: inline-block;
-}

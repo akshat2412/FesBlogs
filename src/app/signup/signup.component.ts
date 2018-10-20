@@ -16,8 +16,6 @@ export class SignupComponent implements OnInit {
   }
 
   Signup(formValues) {
-    console.log(formValues);
-    return;
     this.apiService.registerUser(formValues.username, formValues.email, formValues.password)
       .subscribe(
         (data) => {
@@ -27,7 +25,7 @@ export class SignupComponent implements OnInit {
         },
         (error) => {
           this.errorList = [];
-          console.log(error['error']['errors']);
+          // console.log(error['error']['errors']);
           const errors = error['error']['errors'];
           for (const key in errors) {
             if (errors.hasOwnProperty(key)) {
