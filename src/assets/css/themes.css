@@ -582,9 +582,6 @@ blockquote.style-02:after {
   padding-bottom: 25px;
   width: 100%;
 }
-.list-posts article:last-child {
-  border-bottom: none;
-}
 .list-posts article .entry-thumbnail {
   max-width: 40%;
   margin: 0 30px 0 0;

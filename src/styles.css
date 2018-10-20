@@ -14,3 +14,13 @@
 .activeroute {
     color: #af7152;
 }
+
+input[disabled]{
+    cursor: not-allowed !important;
+}
+
+em {
+    float: right;
+    color: red;
+    display: inline-block;
+}
