@@ -22,6 +22,7 @@ import { CommentListItemComponent } from './comment-list-item/comment-list-item.
 import { ArticleViewComponent } from './article-view/article-view.component';
 import { TaggedArticlesLandingComponent } from './tagged-articles-landing/tagged-articles-landing.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { LoginComponent } from './login/login.component';
     ArticleViewComponent,
     TaggedArticlesLandingComponent,
     LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

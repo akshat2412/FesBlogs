@@ -55,4 +55,16 @@ export class ApiService {
   clearUser(): void {
     localStorage.clear();
   }
+
+  registerUser(username: string, email: string, password: string) {
+    const userRegistrationObject = Object.assign({}, {user: {username, email, password}});
+    return this.http.post(this.url + '/users', userRegistrationObject);
+  }
+
+  getUserName() {
+    if (this.currentUser) {
+      return this.currentUser.username;
+    }
+    return null;
+  }
 }

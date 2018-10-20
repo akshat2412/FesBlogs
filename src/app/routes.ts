@@ -4,6 +4,7 @@ import { ArticleViewComponent } from './article-view/article-view.component';
 import { PageDoesNotExistsComponent } from './page-does-not-exists/page-does-not-exists.component';
 import { TaggedArticlesLandingComponent } from './tagged-articles-landing/tagged-articles-landing.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -15,6 +16,11 @@ export const routes: Routes = [
     {
       path: 'login',
       component: LoginComponent,
+      pathMatch: 'full'
+    },
+    {
+      path: 'signup',
+      component: SignupComponent,
       pathMatch: 'full'
     },
     {
