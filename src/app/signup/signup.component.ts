@@ -9,12 +9,15 @@ import { ApiService } from '../api.service';
 })
 export class SignupComponent implements OnInit {
   errorList: string[] = [];
+  showValidationMessages: Boolean;
   constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
   }
 
   Signup(formValues) {
+    console.log(formValues);
+    return;
     this.apiService.registerUser(formValues.username, formValues.email, formValues.password)
       .subscribe(
         (data) => {
@@ -27,8 +30,10 @@ export class SignupComponent implements OnInit {
           console.log(error['error']['errors']);
           const errors = error['error']['errors'];
           for (const key in errors) {
-            for (const errorMessage of errors[key]){
-              this.errorList.push(`${key} ${errorMessage}`);
+            if (errors.hasOwnProperty(key)) {
+              for (const errorMessage of errors[key]) {
+                this.errorList.push(`${key} ${errorMessage}`);
+              }
             }
           }
           console.log(this.errorList);

@@ -1,0 +1,8 @@
+input[disabled]{
+    cursor: not-allowed;
+}
+
+em {
+    float: right;
+    color: red;
+}

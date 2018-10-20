@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
   invalidLoginCredentials: Boolean = false;
+  showValidationMessgages: Boolean;
   constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
