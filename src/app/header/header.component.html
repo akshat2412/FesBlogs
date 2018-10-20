@@ -31,7 +31,7 @@
                       <li *ngIf = "!loggedIn" class="menu-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                         <a [routerLink] = "['/signup']">Sign Up</a>
                       </li>
-                      <li *ngIf = "loggedIn">
+                      <li *ngIf = "loggedIn" class="menu-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                         <a [routerLink] = "['/editor']">New Article</a>
                       </li>
                       <li *ngIf = "loggedIn">
