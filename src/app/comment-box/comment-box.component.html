@@ -1,3 +1,15 @@
+<div class="respond text-center" *ngIf = "isLoggedIn">
+    <h3 class="respond-title">Write a Comment</h3><!-- /.respond-title -->
+    
+    <form #commentForm = "ngForm" (ngSubmit) = "comment(commentForm.value)"  class="comment-form">
+        <span class="comment-form-control-wrap message">
+            <textarea (ngModel) = "comment" name="comment" id="comment" class="comment-form-control" placeholder="Your Comment"></textarea>
+        </span>
+        <span class="comment-form-control-wrap submit">
+            <input type="submit" name="submit" id="submit" class="comment-form-control" value="Submit">
+        </span>
+    </form>
+</div><!-- /.respond -->
 <div *ngIf = "CommentsData?.length > 0" class="comments text-center" >
     <div class="post-meta">
         <span class="comments" ><i class="icon_comment_alt"></i> <a href="#" *ngIf = "CommentsData.length == 1; else multipleComments">{{CommentsData.length}} Comment</a></span><!-- /.comments -->
