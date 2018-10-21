@@ -37,8 +37,8 @@
                       <li *ngIf = "loggedIn">
                         <a href="">Settings</a>
                       </li>
-                      <li *ngIf = "loggedIn">
-                        <a href="">{{userName}}</a>
+                      <li *ngIf = "loggedIn" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <a [routerLink] = "['/profile', userName]">{{userName}}</a>
                       </li>
 
                   </ul><!-- /.navbar-nav -->
