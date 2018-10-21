@@ -13,24 +13,38 @@ export class ProfileComponent implements OnInit {
   profile: IProfile;
   showFavorites: Boolean = false;
   showMyArticles: Boolean = true;
+  isCurrentUser: boolean;
+  isLoggedIn: boolean;
+  username: string;
   constructor(private route: ActivatedRoute, private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
-    this.apiService.getProfile(this.route.snapshot.params['username'])
-      .subscribe(
-        (data) => this.profile = data['profile'],
-        (error) => this.router.navigate(['/404'])
-      );
+    this.route.params.subscribe(params => {
+      this.getProfile();
+    });
+    this.getProfile();
   }
 
   toggleList(list: string){
     if (list === 'myArticles') {
       this.showMyArticles = true;
-      this.showFavorites =false;
+      this.showFavorites = false;
     } else {
       this.showFavorites = true;
       this.showMyArticles = false;
     }
+  }
+
+  getProfile() {
+    this.apiService.getProfile(this.route.snapshot.params['username'])
+      .subscribe(
+        (data) => this.profile = data['profile'],
+        (error) => this.router.navigate(['/404']),
+        () => {
+          this.isLoggedIn = this.apiService.isLoggedIn();
+          this.isCurrentUser = this.isLoggedIn && (this.route.snapshot.params['username'] === this.apiService.currentUser.username);
+        }
+      );
   }
 
 }
