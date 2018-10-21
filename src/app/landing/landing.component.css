@@ -1,0 +1,26 @@
+.button-row {
+    border-bottom: 1px solid #eaeaea;
+    width: 70%;
+}
+.list-button {
+    border: none;
+    background-color: transparent;
+    color: black;
+    padding-bottom: 10px;
+}
+
+.list-button:hover {
+    color: grey;
+}
+
+.list-button:focus {
+    outline: 0;
+}
+
+.list-button-active {
+    border-bottom: 2px solid lightgreen;
+}
+
+.details {
+    border-bottom: none;
+}

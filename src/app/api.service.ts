@@ -133,4 +133,10 @@ export class ApiService {
                                      .set('Authorization', 'Token ' + localStorage.getItem('token'));
     return this.http.delete(this.url + '/profiles/' + username + '/follow', {headers: headers});
   }
+
+  getUserFeed() {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                     .set('Authorization', 'Token ' + localStorage.getItem('token'));
+    return this.http.get(this.url + '/articles/feed', {headers});
+  }
 }

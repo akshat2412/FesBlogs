@@ -1,0 +1,16 @@
+
+<div *ngIf = "articles; else loading" class="list-posts">
+    <div *ngIf = "articles.length > 0; else noArticles">
+      <app-article-list-item *ngFor = "let article of articles" [articleData] = "article"></app-article-list-item>
+      <app-pagination [pageNumber] = "pageNumber"></app-pagination>
+    </div>
+    <ng-template #noArticles>
+      <p>
+          No articles are here... yet.
+      </p>
+  </ng-template>
+  
+  </div><!-- /.list-posts -->
+  <ng-template #loading> <p>Loading Articles</p></ng-template>
+  
+          
