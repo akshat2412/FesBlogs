@@ -81,4 +81,18 @@ export class ApiService {
                                .set('Authorization', 'Token ' + localStorage.getItem('token'));
     return this.http.post(this.url + '/articles', articlePostObject, {headers: headers});
   }
+
+  getProfile(handle: string){
+    return this.http.get(this.url + '/profiles/' + handle);
+  }
+
+  getArticlesByUser(username: string) {
+    const params = new HttpParams().set('author', username);
+    return this.http.get(this.url + '/articles', {params: params});
+  }
+
+  getFavoritedArticlesByUser(username: string) {
+    const params = new HttpParams().set('favorited', username);
+    return this.http.get(this.url + '/articles', {params: params});
+  }
 }

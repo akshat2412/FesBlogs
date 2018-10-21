@@ -1,0 +1,33 @@
+.about-me .avatar {
+    margin: 45px 0 38px;
+}
+
+.padding {
+    padding: 0 0;
+}
+
+.button-row {
+    border-bottom: 1px solid #eaeaea;
+}
+.list-button {
+    border: none;
+    background-color: transparent;
+    color: black;
+    padding-bottom: 10px;
+}
+
+.list-button:hover {
+    color: grey;
+}
+
+.list-button:focus {
+    outline: 0;
+}
+
+.list-button-active {
+    border-bottom: 2px solid lightgreen;
+}
+
+.details {
+    border-bottom: none;
+}

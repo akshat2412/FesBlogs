@@ -24,6 +24,9 @@ import { TaggedArticlesLandingComponent } from './tagged-articles-landing/tagged
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { EditorComponent } from './editor/editor.component';
+import { ProfileComponent } from './profile/profile.component';
+import { UserArticlesListComponent } from './user-articles-list/user-articles-list.component';
+import { UserFavoritedArticlesListComponent } from './user-favorited-articles-list/user-favorited-articles-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +47,9 @@ import { EditorComponent } from './editor/editor.component';
     LoginComponent,
     SignupComponent,
     EditorComponent,
+    ProfileComponent,
+    UserArticlesListComponent,
+    UserFavoritedArticlesListComponent,
   ],
   imports: [
     BrowserModule,

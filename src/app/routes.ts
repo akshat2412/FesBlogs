@@ -1,3 +1,5 @@
+import { Routes } from '@angular/router';
+
 import { LandingComponent } from './landing/landing.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ArticleViewComponent } from './article-view/article-view.component';
@@ -6,7 +8,7 @@ import { TaggedArticlesLandingComponent } from './tagged-articles-landing/tagged
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { EditorComponent } from './editor/editor.component';
-import { Routes } from '@angular/router';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
     {
@@ -37,6 +39,11 @@ export const routes: Routes = [
     {
       path: 'article/:slug',
       component: ArticleViewComponent,
+    },
+    {
+      path: 'profile/:username',
+      component: ProfileComponent,
+      // pathMatch: 'full'
     },
     {
       path: '404',
