@@ -24,3 +24,9 @@ em {
     color: red;
     display: inline-block;
 }
+
+.errormessage {
+    color: red;
+    font-weight: 600;
+    list-style: none;
+}

@@ -41,6 +41,7 @@ export class ApiService {
 
   saveUser(userDetails: any) {
     this.currentUser = userDetails['user'];
+    localStorage.clear();
     localStorage.setItem('token', this.currentUser.token);
     console.log(this.currentUser);
   }
@@ -94,5 +95,12 @@ export class ApiService {
   getFavoritedArticlesByUser(username: string) {
     const params = new HttpParams().set('favorited', username);
     return this.http.get(this.url + '/articles', {params: params});
+  }
+
+  updateUser(email: string, bio: string, image: string, username: string, password: string) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                     .set('Authorization', 'Token ' + localStorage.getItem('token'));
+    const userUpdateObject = Object.assign({}, {user: {email, bio, image, username, password}});
+    return this.http.put(this.url + '/user', userUpdateObject, {headers: headers});
   }
 }
