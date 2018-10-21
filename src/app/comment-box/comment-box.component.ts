@@ -9,9 +9,27 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CommentBoxComponent implements OnInit {
   CommentsData: IComment[];
+  isLoggedIn: boolean;
   constructor(private apiService: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.isLoggedIn = this.apiService.isLoggedIn();
+    this.apiService.getComments(this.route.snapshot.params['slug'])
+      .subscribe(
+        (data) => this.CommentsData = data['comments'],
+        (error) => this.CommentsData = null
+      );
+  }
+
+  comment(formValues) {
+    this.apiService.addComment(formValues, this.route.snapshot.params['slug'])
+      .subscribe(
+        (data) => this.CommentsData.unshift(data['comment']),
+        (error) => console.log(error)
+      );
+  }
+
+  updateComments(value: boolean) {
     this.apiService.getComments(this.route.snapshot.params['slug'])
       .subscribe(
         (data) => this.CommentsData = data['comments'],

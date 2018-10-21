@@ -1,9 +1,27 @@
-<div *ngIf = "CommentsData?.length > 0" class="comments text-center" >
+<div class="respond text-center" *ngIf = "isLoggedIn">
+    <h3 class="respond-title">Write a Comment</h3><!-- /.respond-title -->
+    
+    <form #commentForm = "ngForm" (ngSubmit) = "comment(commentForm.value)"  class="comment-form">
+        <span class="comment-form-control-wrap message">
+            <em *ngIf = "commentForm.controls.comment?.invalid && commentForm.controls.comment?.touched">Required</em>    
+            <textarea (ngModel) = "comment" name="comment" id="comment" class="comment-form-control" placeholder="Your Comment" required></textarea>
+        </span>
+        <span class="comment-form-control-wrap submit">
+            <input type="submit" name="submit" id="submit" class="comment-form-control" value="Submit" [disabled] = "commentForm.invalid">
+        </span>
+    </form>
+</div><!-- /.respond -->
+<div *ngIf = "CommentsData; else loadingComments" class="comments text-center" >
     <div class="post-meta">
         <span class="comments" ><i class="icon_comment_alt"></i> <a href="#" *ngIf = "CommentsData.length == 1; else multipleComments">{{CommentsData.length}} Comment</a></span><!-- /.comments -->
         <ng-template #multipleComments><a href="#">{{CommentsData.length}} Comments</a></ng-template>
     </div><!-- /.post-meta -->
   <ul class="comment-list">
-    <app-comment-list-item *ngFor = "let Comment of CommentsData" [CommentData] = "Comment"></app-comment-list-item>
+    <app-comment-list-item *ngFor = "let Comment of CommentsData" [CommentData] = "Comment" (updateComments) = "updateComments($event)"></app-comment-list-item>
   </ul><!-- /.comment-list -->
 </div><!-- /.comments -->
+<ng-template #loadingComments>
+    <div class="text-center">
+        <p>Loading Comments...</p>
+    </div>
+</ng-template>
