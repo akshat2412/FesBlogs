@@ -30,6 +30,7 @@ import { UserFavoritedArticlesListComponent } from './user-favorited-articles-li
 import { ApiService } from './api.service';
 import { RouteActivatorService } from './route-activator.service';
 import { SettingsComponent } from './settings/settings.component';
+import { ArticleEditorComponent } from './article-editor/article-editor.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +55,7 @@ import { SettingsComponent } from './settings/settings.component';
     UserArticlesListComponent,
     UserFavoritedArticlesListComponent,
     SettingsComponent,
+    ArticleEditorComponent,
   ],
   imports: [
     BrowserModule,

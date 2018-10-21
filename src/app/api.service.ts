@@ -103,4 +103,17 @@ export class ApiService {
     const userUpdateObject = Object.assign({}, {user: {email, bio, image, username, password}});
     return this.http.put(this.url + '/user', userUpdateObject, {headers: headers});
   }
+
+  updateArticle(title: string, description: string, body: string, slug: string) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                     .set('Authorization', 'Token ' + localStorage.getItem('token'));
+    const articleUpdateObject = Object.assign({}, {article: {title, description, body}});
+    return this.http.put(this.url + '/articles/' + slug, articleUpdateObject, {headers: headers});
+  }
+
+  deleteArticle(slug: string) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                     .set('Authorization', 'Token ' + localStorage.getItem('token'));
+    return this.http.delete(this.url + '/articles/' + slug, {headers});
+  }
 }

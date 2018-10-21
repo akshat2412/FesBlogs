@@ -11,7 +11,7 @@ import { EditorComponent } from './editor/editor.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RouteActivatorService } from './route-activator.service';
 import { SettingsComponent } from './settings/settings.component';
-
+import { ArticleEditorComponent } from './article-editor/article-editor.component';
 
 export const routes: Routes = [
     {
@@ -38,7 +38,8 @@ export const routes: Routes = [
     {
       path: 'settings',
       component: SettingsComponent,
-      pathMatch: 'full'
+      pathMatch: 'full',
+      canActivate: [RouteActivatorService]
     },
     {
       path: 'articles/:tag',
@@ -53,6 +54,12 @@ export const routes: Routes = [
       path: 'profile/:username',
       component: ProfileComponent,
       // pathMatch: 'full'
+    },
+    {
+      path: 'editor/:slug',
+      component: ArticleEditorComponent,
+      pathMatch: 'full',
+      canActivate: [RouteActivatorService]
     },
     {
       path: '404',

@@ -1,0 +1,57 @@
+<div class="padding">
+    <div class="container">
+        <div class="respond text-center">
+            <h1>Edit article</h1>
+            <div class="row mt20" *ngIf = "errorList?.length > 0">
+                <div class="col-md-4 col-md-offset-4">
+                    <ul>
+                        <li *ngFor = "let errorMessage of errorList" class="errormessage">{{errorMessage}}</li>
+                    </ul>
+                </div>
+            </div>
+            <form [formGroup] = "articleForm" (ngSubmit) = "updateArticle(articleForm.value)" class="comment-form">
+                <!-- <div class="row mt20" *ngIf = "errorList?.length > 0">
+                  <div class="col-md-4 col-md-offset-4">
+                    <ul>
+                      <li *ngFor = "let errorMessage of errorList" class="errormessage">{{errorMessage}}</li>
+                    </ul>
+                  </div>
+        
+                </div> -->
+                <div class="row mt20">
+                    <div class="col-md-10 col-md-offset-1">
+                        <span class="comment-form-control-wrap email editor-input-container">
+                            <label for="title">Article Title</label>
+                            <!-- <em *ngIf = "signupForm.controls.username?.invalid && (signupForm.controls.username?.touched || showValidationMessages)">Required</em> -->
+                            <input formControlName = "title" type="title" name="title" id="title" class="comment-form-control editor-input" required>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <span class="comment-form-control-wrap email editor-input-container">
+                            <label for="description">Description</label>
+                            <!-- <em *ngIf = "signupForm.controls.username?.invalid && (signupForm.controls.username?.touched || showValidationMessages)">Required</em> -->
+                            <input formControlName = "description" type="description" name="description" id="description" class="comment-form-control editor-input" required>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-10 col-md-offset-1">
+                    <span class="wpcf7-form-control-wrap message">
+                      <label for="body">Body</label>
+                      <textarea formControlName = "body" name="body" id="body" class="wpcf7-form-control editor-input" required></textarea>
+                    </span>
+                  </div>
+                </div>
+                <div class="row mt20">
+                    <div class="col-md-12">
+                        <span class="comment-form-control-wrap submit" (mouseenter) = "showValidationMessages = true" (mouseleave) = "showValidationMessages = false">
+                            <input type="submit" name="submit" id="submit" class="comment-form-control" value="Update Article">
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div><!-- /.respond -->
+    </div>
+</div>
