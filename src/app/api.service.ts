@@ -45,7 +45,7 @@ export class ApiService {
     console.log(this.currentUser);
   }
 
-  isLoggedIn(): Boolean {
+  isLoggedIn(): boolean {
     if (this.currentUser) {
       return true;
     }

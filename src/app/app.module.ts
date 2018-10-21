@@ -27,6 +27,8 @@ import { EditorComponent } from './editor/editor.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserArticlesListComponent } from './user-articles-list/user-articles-list.component';
 import { UserFavoritedArticlesListComponent } from './user-favorited-articles-list/user-favorited-articles-list.component';
+import { ApiService } from './api.service';
+import { RouteActivatorService } from './route-activator.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +60,7 @@ import { UserFavoritedArticlesListComponent } from './user-favorited-articles-li
     CommonModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ApiService, RouteActivatorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
