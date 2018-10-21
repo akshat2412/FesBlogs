@@ -10,6 +10,8 @@ import { SignupComponent } from './signup/signup.component';
 import { EditorComponent } from './editor/editor.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RouteActivatorService } from './route-activator.service';
+import { SettingsComponent } from './settings/settings.component';
+
 
 export const routes: Routes = [
     {
@@ -32,6 +34,11 @@ export const routes: Routes = [
       component: EditorComponent,
       pathMatch: 'full',
       canActivate: [RouteActivatorService]
+    },
+    {
+      path: 'settings',
+      component: SettingsComponent,
+      pathMatch: 'full'
     },
     {
       path: 'articles/:tag',

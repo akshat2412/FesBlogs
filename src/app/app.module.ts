@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -29,6 +29,7 @@ import { UserArticlesListComponent } from './user-articles-list/user-articles-li
 import { UserFavoritedArticlesListComponent } from './user-favorited-articles-list/user-favorited-articles-list.component';
 import { ApiService } from './api.service';
 import { RouteActivatorService } from './route-activator.service';
+import { SettingsComponent } from './settings/settings.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,13 +53,15 @@ import { RouteActivatorService } from './route-activator.service';
     ProfileComponent,
     UserArticlesListComponent,
     UserFavoritedArticlesListComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ApiService, RouteActivatorService],
   bootstrap: [AppComponent]

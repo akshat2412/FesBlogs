@@ -1,0 +1,9 @@
+.settings-input {
+    line-height: 30px;
+    font-size: 16px;
+    color: #808080;
+}
+
+span.settings-input-container {
+    width: 100% !important;
+}
