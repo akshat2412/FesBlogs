@@ -2,12 +2,12 @@
   <div class="padding">
       <div class="container">
           <div class="about-me">
-              <div class="avatar text-center"><img src="https://static.productionready.io/images/smiley-cyrus.jpg" alt="Avatar" class="img-circle" height="80px" width = "80px"></div><!-- /.avatar -->
-
+              <div class="avatar text-center"><img src="{{profile.image}}" alt="Avatar" class="img-circle" height="80px" width = "80px"></div><!-- /.avatar -->
               <div class="details">
-                  <div class="details-top text-center">
-                      <h2 class="section-title">{{profile.username}}</h2><!-- /.section-title -->
-                  </div><!-- /.details-top -->
+                <div class="details-top text-center">
+                  <h2 class="section-title">{{profile.username}}</h2><!-- /.section-title -->
+                </div><!-- /.details-top -->
+                <div class="text-center"><p>{{profile.bio}}</p></div>
               </div><!-- /.details -->
               
           </div><!-- /.about-me -->
