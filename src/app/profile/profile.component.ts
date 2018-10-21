@@ -15,7 +15,6 @@ export class ProfileComponent implements OnInit {
   showMyArticles: Boolean = true;
   isCurrentUser: boolean;
   isLoggedIn: boolean;
-  username: string;
   constructor(private route: ActivatedRoute, private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
@@ -44,6 +43,26 @@ export class ProfileComponent implements OnInit {
           this.isLoggedIn = this.apiService.isLoggedIn();
           this.isCurrentUser = this.isLoggedIn && (this.route.snapshot.params['username'] === this.apiService.currentUser.username);
         }
+      );
+  }
+
+  followUser() {
+    this.apiService.followUser(this.profile.username)
+      .subscribe(
+        (data) => {
+          this.profile = data['profile'];
+        },
+        (error) => this.router.navigate(['/404'])
+      );
+  }
+
+  unFollowUser() {
+    this.apiService.unFollowUser(this.profile.username)
+      .subscribe(
+        (data) => {
+          this.profile = data['profile'];
+        },
+        (error) => this.router.navigate(['/404'])
       );
   }
 

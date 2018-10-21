@@ -8,8 +8,14 @@
                   <h2 class="section-title">{{profile.username}}</h2><!-- /.section-title -->
                 </div><!-- /.details-top -->
                 <div class="text-center"><p>{{profile.bio}}</p></div>
-                <div class="text-center">
+                <div class="text-center" *ngIf = "isCurrentUser && isLoggedIn">
                   <a class="btn" [routerLink] = "['/settings']">Edit Profile Settings</a>
+                </div>
+                <div class="text-center" *ngIf = "!isCurrentUser && isLoggedIn">
+                    <a class="btn" (click) = "followUser()" *ngIf = "!profile.following">Follow {{profile.username}}</a>
+                </div>
+                <div class="text-center" *ngIf = "!isCurrentUser && isLoggedIn">
+                    <a class="btn" (click) = "unFollowUser()" *ngIf = "profile.following">Unfollow {{profile.username}}</a>
                 </div>
               </div><!-- /.details -->
               

@@ -84,6 +84,11 @@ export class ApiService {
   }
 
   getProfile(handle: string){
+    if ( this.isLoggedIn() ) {
+      const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                     .set('Authorization', 'Token ' + localStorage.getItem('token'));
+      return this.http.get(this.url + '/profiles/' + handle, {headers});
+    }
     return this.http.get(this.url + '/profiles/' + handle);
   }
 
@@ -115,5 +120,17 @@ export class ApiService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json')
                                      .set('Authorization', 'Token ' + localStorage.getItem('token'));
     return this.http.delete(this.url + '/articles/' + slug, {headers});
+  }
+
+  followUser(username: string) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                     .set('Authorization', 'Token ' + localStorage.getItem('token'));
+    return this.http.post(this.url + '/profiles/' + username + '/follow', {}, {headers: headers});
+  }
+
+  unFollowUser(username: string) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                     .set('Authorization', 'Token ' + localStorage.getItem('token'));
+    return this.http.delete(this.url + '/profiles/' + username + '/follow', {headers: headers});
   }
 }
