@@ -1,9 +1,8 @@
 <nav class="pagination pagination-02">
     <ul>
+
         <li class="hidden"><a href="#" aria-label="Previous">Previous</a></li>
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#" aria-label="Next">Next</a></li>
+        <!-- <li class="active"><a href="#">1</a></li> -->
+        <li *ngFor = "let pageNo of pagesArray" [class.active] = "pageNo === currentPage"><a (click) = "emitPageRequest(pageNo)" >{{pageNo}}</a></li>
     </ul>
 </nav><!-- /.pagination -->

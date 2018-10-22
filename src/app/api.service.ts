@@ -13,13 +13,16 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getArticles() {
+  getArticles(pageNumber: number) {
+    const offset = (pageNumber - 1) * 10;
+    const params = new HttpParams().set('offset', offset.toString())
+                                  .set('limit', '10');
     if (this.isLoggedIn()) {
       const headers = new HttpHeaders().set('Content-Type', 'application/json')
                                       .set('Authorization', 'Token ' + localStorage.getItem('token'));
-      return this.http.get(this.url + '/articles', {headers});
+      return this.http.get(this.url + '/articles', {headers, params});
     }
-    return this.http.get(this.url + '/articles');
+    return this.http.get(this.url + '/articles', {params});
   }
 
   getTags() {
@@ -39,9 +42,17 @@ export class ApiService {
     return this.http.get(`${this.url}/articles/${slug}/comments`);
   }
 
-  getArticlesByTag(tag: string) {
-    const params = new HttpParams().set('tag', tag);
-    return this.http.get(this.url + '/articles', {params: params});
+  getArticlesByTag(tag: string, pageNumber: number) {
+    const offset = (pageNumber - 1) * 20;
+    const params = new HttpParams().set('tag', tag)
+                                   .set('limit', '10')
+                                   .set('offset', offset.toString());
+    if (this.isLoggedIn()) {
+      const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                        .set('Authorization', 'Token ' + localStorage.getItem('token'));
+      return this.http.get(this.url + '/articles', {params, headers});
+    }
+    return this.http.get(this.url + '/articles', {params});
   }
 
   loginUser(email: string, password: string) {
@@ -103,13 +114,19 @@ export class ApiService {
     return this.http.get(this.url + '/profiles/' + handle);
   }
 
-  getArticlesByUser(username: string) {
-    const params = new HttpParams().set('author', username);
+  getArticlesByUser(username: string, pageNumber: number) {
+    const offset = (pageNumber - 1) * 10;
+    const params = new HttpParams().set('offset', offset.toString())
+                                  .set('limit', '10')
+                                  .set('author', username);
     return this.http.get(this.url + '/articles', {params: params});
   }
 
-  getFavoritedArticlesByUser(username: string) {
-    const params = new HttpParams().set('favorited', username);
+  getFavoritedArticlesByUser(username: string, pageNumber) {
+    const offset = (pageNumber - 1) * 10;
+    const params = new HttpParams().set('offset', offset.toString())
+                                  .set('limit', '10')
+                                  .set('favorited', username);
     return this.http.get(this.url + '/articles', {params: params});
   }
 
@@ -145,10 +162,13 @@ export class ApiService {
     return this.http.delete(this.url + '/profiles/' + username + '/follow', {headers: headers});
   }
 
-  getUserFeed() {
+  getUserFeed(pageNumber: number) {
+    const offset = (pageNumber - 1) * 10;
+    const params = new HttpParams().set('offset', offset.toString())
+                                  .set('limit', '10');
     const headers = new HttpHeaders().set('Content-Type', 'application/json')
                                      .set('Authorization', 'Token ' + localStorage.getItem('token'));
-    return this.http.get(this.url + '/articles/feed', {headers});
+    return this.http.get(this.url + '/articles/feed', {params, headers});
   }
 
   addComment(comment, slug: string) {

@@ -1,8 +1,8 @@
 
 <div *ngIf = "articles; else loading" class="list-posts">
     <app-article-list-item *ngFor = "let article of articles" [articleData] = "article"></app-article-list-item>
-    <app-pagination [pageNumber] = "pageNumber"></app-pagination>
 </div><!-- /.list-posts -->
+<app-pagination [articlesCount] = "articlesCount" (requestedPage) = "loadPage($event)"></app-pagination>
 <ng-template #loading> <p>Loading Articles</p></ng-template>
 
           
