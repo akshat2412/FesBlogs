@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ApiService } from '../api.service';
+import { ApiService } from '../Services/api.service';
 import { IArticle } from 'src/Models/Article.model';
 
 @Component({
@@ -10,10 +10,12 @@ import { IArticle } from 'src/Models/Article.model';
   styleUrls: ['./user-articles-list.component.css']
 })
 export class UserArticlesListComponent implements OnInit, OnChanges {
+  @Input() username: string;
+
   articles: IArticle[];
   articlesCount: number;
   pageNumber = 1;
-  @Input() username: string;
+
   constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {

@@ -1,15 +1,15 @@
 <li class="comment parent media">
   <div class="author-avatar media-left pull-left">
-      <img class="img-circle" src="{{CommentData.author.image}}" alt="Avatar" height="40px" width="40px">
+      <img class="img-circle" src="{{commentData.author.image}}" alt="Avatar" height="40px" width="40px">
   </div><!-- /.author-avatar -->
   <div class="comment-details media-body">
-      <app-user-profile-link [User] = "CommentData.author"></app-user-profile-link>
+      <app-user-profile-link [user] = "commentData.author"></app-user-profile-link>
       <p>
-          {{CommentData.body}}
+          {{commentData.body}}
       </p>
-      <time>{{CommentData.createdAt | date}}</time>
-      <div class="pull-right" *ngIf = "isLoggedIn && CommentData.author.username === username">
-          <a class="btn" (click) = "deleteComment(CommentData.id)">Delete Comment</a>
+      <time>{{commentData.createdAt | date}}</time>
+      <div class="pull-right" *ngIf = "isLoggedIn && commentData.author.username === username">
+          <a class="btn" (click) = "deleteComment(commentData.id)">Delete Comment</a>
       </div>
   </div><!-- /.comment-details -->
   <hr>

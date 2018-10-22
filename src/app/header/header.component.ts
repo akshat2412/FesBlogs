@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ApiService } from '../api.service';
+import { ApiService } from '../Services/api.service';
+import { AuthService } from '../Services/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,15 +11,16 @@ import { ApiService } from '../api.service';
 export class HeaderComponent implements OnInit {
   loggedIn = false;
   userName: string;
-  constructor(private apiService: ApiService, private router: Router) { }
+  
+  constructor(private apiService: ApiService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
   isLoggedIn(): Boolean {
-    if ( this.apiService.isLoggedIn()) {
+    if ( this.authService.isLoggedIn()) {
       this.loggedIn = true;
-      this.userName = this.apiService.getUserName();
+      this.userName = this.authService.getUserName();
       return true;
     }
     this.loggedIn = false;

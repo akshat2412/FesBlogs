@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { ApiService } from '../api.service';
+import { ApiService } from '../Services/api.service';
+import { AuthService } from '../Services/auth.service';
 import { IProfile } from '../../Models/Profile.model';
 
 @Component({
@@ -15,7 +16,8 @@ export class ProfileComponent implements OnInit {
   showMyArticles: Boolean = true;
   isCurrentUser: boolean;
   isLoggedIn: boolean;
-  constructor(private route: ActivatedRoute, private apiService: ApiService, private router: Router) { }
+
+  constructor(private route: ActivatedRoute, private apiService: ApiService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -40,8 +42,8 @@ export class ProfileComponent implements OnInit {
         (data) => this.profile = data['profile'],
         (error) => this.router.navigate(['/404']),
         () => {
-          this.isLoggedIn = this.apiService.isLoggedIn();
-          this.isCurrentUser = this.isLoggedIn && (this.route.snapshot.params['username'] === this.apiService.currentUser.username);
+          this.isLoggedIn = this.authService.isLoggedIn();
+          this.isCurrentUser = this.isLoggedIn && (this.route.snapshot.params['username'] === this.authService.currentUser.username);
         }
       );
   }

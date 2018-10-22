@@ -4,11 +4,11 @@
         <a [routerLink] = "['']" class="btn">Global Feed</a>
         <div class="row">
             <div class="col-sm-8">
-                <app-article-list [SelectedTag] = "SelectedTag"></app-article-list>
+                <app-article-list [selectedTag] = "selectedTag"></app-article-list>
             </div>
             <div class="col-sm-4">
                 <aside class="sidebar text-center">
-                    <app-tagbox (ClickedButton) = "HandleTagClick($event)"></app-tagbox>
+                    <app-tagbox (clickedButton) = "handleTagClick($event)"></app-tagbox>
                 </aside>
             </div>
         </div><!-- /.row -->
