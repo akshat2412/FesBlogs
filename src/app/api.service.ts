@@ -14,6 +14,11 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getArticles() {
+    if (this.isLoggedIn()) {
+      const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                      .set('Authorization', 'Token ' + localStorage.getItem('token'));
+      return this.http.get(this.url + '/articles', {headers});
+    }
     return this.http.get(this.url + '/articles');
   }
 
@@ -22,6 +27,11 @@ export class ApiService {
   }
 
   getArticle(slug: string) {
+    if (this.isLoggedIn()) {
+      const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                      .set('Authorization', 'Token ' + localStorage.getItem('token'));
+      return this.http.get(`${this.url}/articles/${slug}`, {headers});
+    }
     return this.http.get(`${this.url}/articles/${slug}`);
   }
 
@@ -151,5 +161,17 @@ export class ApiService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json')
                                      .set('Authorization', 'Token ' + localStorage.getItem('token'));
     return this.http.delete(this.url + '/articles/' + slug + '/comments/' + id, {headers});
+  }
+
+  favoriteArticle(slug: string) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                     .set('Authorization', 'Token ' + localStorage.getItem('token'));
+    return this.http.post(this.url + '/articles/' + slug + '/favorite', {}, {headers});
+  }
+
+  unFavoriteArticle(slug: string) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                     .set('Authorization', 'Token ' + localStorage.getItem('token'));
+    return this.http.delete(this.url + '/articles/' + slug + '/favorite', {headers});
   }
 }
