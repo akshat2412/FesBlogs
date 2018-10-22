@@ -34,3 +34,24 @@ em {
 .btn {
     margin-right: 10px;
 }
+
+.like-icon-unselected {
+    background-color: white;
+    color: lightgreen;
+    border: 1px solid lightgreen;
+}
+.like-icon-unselected:hover {
+    background-color: lightgreen;
+    color: white;
+    border: 1px solid lightgreen;
+}
+.like-icon-selected {
+    background-color: lightgreen;
+    color: white;
+    border: 1px solid lightgreen;
+}
+.like-icon-selected:hover {
+    background-color: white;
+    color: lightgreen;
+    border: 1px solid lightgreen;
+}

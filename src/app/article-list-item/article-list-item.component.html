@@ -10,7 +10,9 @@
           <p>
             {{articleData.description}}    
           </p>
-    
+          <div class="pull-right" *ngIf = "isLoggedIn">
+            <a class="btn" (click) = "toggleFavoriteArticle()" [class.like-icon-unselected] = "!articleData.favorited" [class.like-icon-selected] = "articleData.favorited"><i class="fa fa-heart " aria-hidden="true"></i>{{articleData.favoritesCount}}</a>
+          </div>
           <a [routerLink] = "['/article', articleData.slug]" class="btn">Read more</a><!-- /.btn -->
       </div><!-- /.entry-content -->
 </article><!-- /.post -->
