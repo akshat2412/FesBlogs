@@ -8,6 +8,9 @@
           {{CommentData.body}}
       </p>
       <time>{{CommentData.createdAt | date}}</time>
+      <div class="pull-right" *ngIf = "isLoggedIn && CommentData.author.username === username">
+          <a class="btn" (click) = "deleteComment(CommentData.id)">Delete Comment</a>
+      </div>
   </div><!-- /.comment-details -->
   <hr>
 </li><!-- /.comment -->

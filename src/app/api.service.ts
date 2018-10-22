@@ -146,4 +146,10 @@ export class ApiService {
     const commentPostObject = Object.assign({}, {comment : {body : comment.comment}});
     return this.http.post(this.url + '/articles/' + slug + '/comments', commentPostObject, {headers});
   }
+
+  deleteComment(id: number, slug: string) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                     .set('Authorization', 'Token ' + localStorage.getItem('token'));
+    return this.http.delete(this.url + '/articles/' + slug + '/comments/' + id, {headers});
+  }
 }

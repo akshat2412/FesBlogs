@@ -24,8 +24,16 @@ export class CommentBoxComponent implements OnInit {
   comment(formValues) {
     this.apiService.addComment(formValues, this.route.snapshot.params['slug'])
       .subscribe(
-        (data) => this.CommentsData.push(data['comment']),
+        (data) => this.CommentsData.unshift(data['comment']),
         (error) => console.log(error)
+      );
+  }
+
+  updateComments(value: boolean) {
+    this.apiService.getComments(this.route.snapshot.params['slug'])
+      .subscribe(
+        (data) => this.CommentsData = data['comments'],
+        (error) => this.CommentsData = null
       );
   }
 
