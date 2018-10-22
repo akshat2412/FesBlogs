@@ -51,4 +51,9 @@ export class SettingsComponent implements OnInit {
       );
   }
 
+  logout() {
+    this.apiService.clearUser();
+    this.router.navigate(['']);
+  }
+
 }
