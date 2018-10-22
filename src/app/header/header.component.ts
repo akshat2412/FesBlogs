@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ApiService } from '../api.service';
 @Component({
@@ -7,9 +8,9 @@ import { ApiService } from '../api.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  loggedIn: Boolean = false;
+  loggedIn = false;
   userName: string;
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit {
       this.userName = this.apiService.getUserName();
       return true;
     }
+    this.loggedIn = false;
     return false;
   }
 }

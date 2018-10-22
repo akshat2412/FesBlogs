@@ -65,6 +65,7 @@ export class ApiService {
 
   clearUser(): void {
     localStorage.clear();
+    this.currentUser = null;
   }
 
   registerUser(username: string, email: string, password: string) {
