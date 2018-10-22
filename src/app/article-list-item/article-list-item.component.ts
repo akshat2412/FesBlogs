@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { IArticle } from 'src/Models/Article.model';
-import { ApiService } from '../api.service';
+import { ApiService } from '../Services/api.service';
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-article-list-item',
@@ -13,10 +14,10 @@ export class ArticleListItemComponent implements OnInit {
   @Input() articleData: IArticle;
   isLoggedIn: boolean;
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.isLoggedIn = this.apiService.isLoggedIn();
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   toggleFavoriteArticle() {

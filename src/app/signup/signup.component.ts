@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ApiService } from '../api.service';
+import { ApiService } from '../Services/api.service';
+import { AuthService } from '../Services/auth.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -10,16 +11,17 @@ import { ApiService } from '../api.service';
 export class SignupComponent implements OnInit {
   errorList: string[] = [];
   showValidationMessages: Boolean;
-  constructor(private apiService: ApiService, private router: Router) { }
+
+  constructor(private apiService: ApiService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  Signup(formValues) {
+  signup(formValues) {
     this.apiService.registerUser(formValues.username, formValues.email, formValues.password)
       .subscribe(
         (data) => {
-          this.apiService.saveUser(data);
+          this.authService.saveUser(data);
           this.errorList = [];
           this.router.navigate(['']);
         },
@@ -37,6 +39,5 @@ export class SignupComponent implements OnInit {
           console.log(this.errorList);
         }
       );
-    // this.apiService.
   }
 }

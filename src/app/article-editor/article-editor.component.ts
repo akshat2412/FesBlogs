@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { ApiService } from '../api.service';
+import { ApiService } from '../Services/api.service';
+import { AuthService } from '../Services/auth.service';
 import { IArticle } from '../../Models/Article.model';
 @Component({
   selector: 'app-article-editor',
@@ -14,7 +15,8 @@ export class ArticleEditorComponent implements OnInit {
   articleForm: FormGroup = null;
   errorList: string[];
   formValuesFetched = false;
-  constructor(private apiService: ApiService, private router: Router, private route: ActivatedRoute, formBuilder: FormBuilder) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private apiService: ApiService, private router: Router, private route: ActivatedRoute, formBuilder: FormBuilder, private authService: AuthService) {
     this.articleForm = formBuilder.group({
       title: null,
       description: null,
@@ -28,7 +30,6 @@ export class ArticleEditorComponent implements OnInit {
       .subscribe(
         (data) => {
           this.articleData = data['article'];
-          console.log('articledata populated');
         },
         (error) => this.router.navigate(['/404']),
         () => {
@@ -51,11 +52,11 @@ export class ArticleEditorComponent implements OnInit {
       .subscribe(
         (data) => {
           console.log(data);
-          this.router.navigate(['/profile', this.apiService.currentUser.username]);
+          this.router.navigate(['/profile', this.authService.currentUser.username]);
         },
         (error) => {
           this.errorList = [];
-          // console.log(error['error']['errors']);
+
           const errors = error['error']['errors'];
           for (const key in errors) {
             if (errors.hasOwnProperty(key)) {

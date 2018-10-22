@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ApiService } from '../api.service';
-import { TrustedUrlString } from '@angular/core/src/sanitization/bypass';
+import { ApiService } from '../Services/api.service';
+import { AuthService } from '../Services/auth.service';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -13,10 +13,10 @@ export class LandingComponent implements OnInit {
   username: string;
   showUserFeed = true;
   showGlobalFeed = false;
-  constructor(private router: Router, private apiService: ApiService) {
-    this.isLoggedIn = apiService.isLoggedIn();
+  constructor(private router: Router, private apiService: ApiService, private authService: AuthService) {
+    this.isLoggedIn = authService.isLoggedIn();
     if (this.isLoggedIn) {
-      this.username = apiService.currentUser.username;
+      this.username = authService.currentUser.username;
     } else {
       this.showUserFeed = false;
       this.showGlobalFeed = true;
@@ -27,7 +27,6 @@ export class LandingComponent implements OnInit {
   }
 
   handleTagClick(ClickedTag: string) {
-    console.log('handling');
     this.router.navigate(['/articles', ClickedTag]);
   }
 

@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges,  } from '@angular/core';
-import { ApiService } from '../api.service';
-import { IArticle } from 'src/Models/Article.model';
 import { Router } from '@angular/router';
+
+import { ApiService } from '../Services/api.service';
+import { IArticle } from 'src/Models/Article.model';
 
 @Component({
   selector: 'app-article-list',
@@ -13,7 +14,8 @@ export class ArticleListComponent implements OnInit, OnChanges {
   articles: IArticle[];
   pageNumber = 1;
   articlesCount: number;
-  @Input() SelectedTag: string = null;
+  @Input() selectedTag: string = null;
+
   constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
@@ -36,8 +38,8 @@ export class ArticleListComponent implements OnInit, OnChanges {
       return;
     }
     this.pageNumber = pageNumber;
-    if ( !!this.SelectedTag ) {
-      this.apiService.getArticlesByTag(this.SelectedTag, pageNumber)
+    if ( !!this.selectedTag ) {
+      this.apiService.getArticlesByTag(this.selectedTag, pageNumber)
         .subscribe(
           (data) => {
             this.articles = data['articles'];

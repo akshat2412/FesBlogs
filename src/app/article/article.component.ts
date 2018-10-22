@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
-import { IArticle } from 'src/Models/Article.model';
 import {Router, ActivatedRoute} from '@angular/router';
+
+import { ApiService } from '../Services/api.service';
+import { AuthService } from '../Services/auth.service';
+import { IArticle } from 'src/Models/Article.model';
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -10,7 +12,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 export class ArticleComponent implements OnInit {
   articleData: IArticle;
   showButtons: boolean;
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
     this.apiService.getArticle(this.route.snapshot.params['slug'])
@@ -18,7 +20,7 @@ export class ArticleComponent implements OnInit {
         (data) => this.articleData = data['article'],
         (error) => this.router.navigate(['/404']),
         () => {
-          this.showButtons = this.apiService.isLoggedIn() && this.articleData.author.username === this.apiService.currentUser.username;
+          this.showButtons = this.authService.isLoggedIn() && this.articleData.author.username === this.authService.currentUser.username;
         }
       );
 

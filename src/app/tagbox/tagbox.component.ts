@@ -1,13 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {ApiService} from '../api.service';
+import {ApiService} from '../Services/api.service';
 @Component({
   selector: 'app-tagbox',
   templateUrl: './tagbox.component.html',
   styleUrls: ['./tagbox.component.css']
 })
 export class TagboxComponent implements OnInit {
-  @Input() SelectedTag: string;
-  @Output() ClickedButton = new EventEmitter();
+  @Output() clickedButton = new EventEmitter();
   tags: string[];
 
   constructor(private apiService: ApiService) { }
@@ -17,8 +16,8 @@ export class TagboxComponent implements OnInit {
       .subscribe((data) => this.tags = data['tags']);
   }
 
-  EmitClickedButton(tag: string) {
-    this.ClickedButton.emit(tag);
+  emitClickedButton(tag: string) {
+    this.clickedButton.emit(tag);
   }
 
 }

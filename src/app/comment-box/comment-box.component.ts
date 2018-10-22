@@ -1,30 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { ApiService } from '../Services/api.service';
 import { IComment } from 'src/Models/Comment.model';
-import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../Services/auth.service';
 @Component({
   selector: 'app-comment-box',
   templateUrl: './comment-box.component.html',
   styleUrls: ['./comment-box.component.css']
 })
 export class CommentBoxComponent implements OnInit {
-  CommentsData: IComment[];
+  commentsData: IComment[];
   isLoggedIn: boolean;
-  constructor(private apiService: ApiService, private route: ActivatedRoute) { }
+
+  constructor(private apiService: ApiService, private authService: AuthService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.isLoggedIn = this.apiService.isLoggedIn();
+    this.isLoggedIn = this.authService.isLoggedIn();
     this.apiService.getComments(this.route.snapshot.params['slug'])
       .subscribe(
-        (data) => this.CommentsData = data['comments'],
-        (error) => this.CommentsData = null
+        (data) => this.commentsData = data['comments'],
+        (error) => this.router.navigate(['/404'])
       );
   }
 
   comment(formValues) {
     this.apiService.addComment(formValues, this.route.snapshot.params['slug'])
       .subscribe(
-        (data) => this.CommentsData.unshift(data['comment']),
+        (data) => this.commentsData.unshift(data['comment']),
         (error) => console.log(error)
       );
   }
@@ -32,8 +35,8 @@ export class CommentBoxComponent implements OnInit {
   updateComments(value: boolean) {
     this.apiService.getComments(this.route.snapshot.params['slug'])
       .subscribe(
-        (data) => this.CommentsData = data['comments'],
-        (error) => this.CommentsData = null
+        (data) => this.commentsData = data['comments'],
+        (error) => this.commentsData = null
       );
   }
 

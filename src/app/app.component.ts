@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ApiService } from './api.service';
+import { ApiService } from './Services/api.service';
+import { AuthService } from './Services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,9 +10,9 @@ import { ApiService } from './api.service';
 export class AppComponent implements OnInit {
   title = 'FesBlogs';
 
-  constructor(private apiService: ApiService) {}
+  constructor(private authService: AuthService) {}
   ngOnInit() {
-    this.apiService.clearUser();
+    this.authService.clearUser();
     console.log('user cleared');
   }
 }

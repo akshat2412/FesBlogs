@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { IArticle } from '../../Models/Article.model';
-import { ApiService } from '../api.service';
+import { ApiService } from '../Services/api.service';
 @Component({
   selector: 'app-user-feed',
   templateUrl: './user-feed.component.html',
@@ -10,9 +10,11 @@ import { ApiService } from '../api.service';
 })
 export class UserFeedComponent implements OnInit {
   @Input() username: string;
+
   articles: IArticle[];
   articlesCount: number;
   pageNumber = 1;
+
   constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {

@@ -11,6 +11,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   totalPages = 1;
   pagesArray: number[];
   currentPage = 1;
+
   constructor() { }
 
   ngOnInit() {

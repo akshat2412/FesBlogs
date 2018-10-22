@@ -11,13 +11,13 @@
         </span>
     </form>
 </div><!-- /.respond -->
-<div *ngIf = "CommentsData; else loadingComments" class="comments text-center" >
+<div *ngIf = "commentsData; else loadingComments" class="comments text-center" >
     <div class="post-meta">
-        <span class="comments" ><i class="icon_comment_alt"></i> <a href="#" *ngIf = "CommentsData.length == 1; else multipleComments">{{CommentsData.length}} Comment</a></span><!-- /.comments -->
-        <ng-template #multipleComments><a href="#">{{CommentsData.length}} Comments</a></ng-template>
+        <span class="comments" ><i class="icon_comment_alt"></i> <a *ngIf = "commentsData.length == 1; else multipleComments">{{commentsData.length}} Comment</a></span><!-- /.comments -->
+        <ng-template #multipleComments><a>{{commentsData.length}} Comments</a></ng-template>
     </div><!-- /.post-meta -->
   <ul class="comment-list">
-    <app-comment-list-item *ngFor = "let Comment of CommentsData" [CommentData] = "Comment" (updateComments) = "updateComments($event)"></app-comment-list-item>
+    <app-comment-list-item *ngFor = "let comment of commentsData" [commentData] = "comment" (updateComments) = "updateComments($event)"></app-comment-list-item>
   </ul><!-- /.comment-list -->
 </div><!-- /.comments -->
 <ng-template #loadingComments>

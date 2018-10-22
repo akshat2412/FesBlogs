@@ -2,24 +2,25 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { IComment } from 'src/Models/Comment.model';
-import { ApiService } from '../api.service';
+import { ApiService } from '../Services/api.service';
+import { AuthService } from '../Services/auth.service';
 @Component({
   selector: 'app-comment-list-item',
   templateUrl: './comment-list-item.component.html',
   styleUrls: ['./comment-list-item.component.css']
 })
 export class CommentListItemComponent implements OnInit {
-  @Input() CommentData: IComment;
+  @Input() commentData: IComment;
   @Output() updateComments = new EventEmitter();
   isLoggedIn: boolean;
   username: string;
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private apiService: ApiService, private authService: AuthService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.isLoggedIn = this.apiService.isLoggedIn();
+    this.isLoggedIn = this.authService.isLoggedIn();
     if (this.isLoggedIn) {
-      this.username = this.apiService.currentUser.username;
+      this.username = this.authService.currentUser.username;
     }
   }
 

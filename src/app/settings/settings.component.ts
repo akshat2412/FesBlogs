@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { ApiService } from '../api.service';
+import { ApiService } from '../Services/api.service';
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-settings',
@@ -12,14 +13,15 @@ import { ApiService } from '../api.service';
 export class SettingsComponent implements OnInit {
   settingsForm: FormGroup;
   errorList: string[];
-  constructor(private apiService: ApiService, private router: Router) { }
+
+  constructor(private apiService: ApiService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    let image = new FormControl(this.apiService.currentUser.image);
-    let username = new FormControl(this.apiService.currentUser.username);
-    let bio = new FormControl(this.apiService.currentUser.bio);
-    let email = new FormControl(this.apiService.currentUser.email);
-    let password = new FormControl();
+    const image = new FormControl(this.authService.currentUser.image);
+    const username = new FormControl(this.authService.currentUser.username);
+    const bio = new FormControl(this.authService.currentUser.bio);
+    const email = new FormControl(this.authService.currentUser.email);
+    const password = new FormControl();
     this.settingsForm = new FormGroup({
       image,
       username,
@@ -33,12 +35,12 @@ export class SettingsComponent implements OnInit {
     this.apiService.updateUser(formValues.email, formValues.bio, formValues.string, formValues.username, formValues.password)
       .subscribe(
         (data) => {
-          this.apiService.saveUser(data);
-          this.router.navigate(['/profile', this.apiService.currentUser.username]);
+          this.authService.saveUser(data);
+          this.router.navigate(['/profile', this.authService.currentUser.username]);
         },
         (error) => {
           this.errorList = [];
-          // console.log(error['error']['errors']);
+
           const errors = error['error']['errors'];
           for (const key in errors) {
             if (errors.hasOwnProperty(key)) {
@@ -52,7 +54,7 @@ export class SettingsComponent implements OnInit {
   }
 
   logout() {
-    this.apiService.clearUser();
+    this.authService.clearUser();
     this.router.navigate(['']);
   }
 
