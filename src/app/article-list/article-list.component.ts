@@ -11,38 +11,47 @@ import { Router } from '@angular/router';
 export class ArticleListComponent implements OnInit, OnChanges {
 
   articles: IArticle[];
-  pageNumber: Number = 1;
+  pageNumber = 1;
+  articlesCount: number;
   @Input() SelectedTag: string = null;
   constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
-    if ( !!this.SelectedTag ) {
-      this.apiService.getArticlesByTag(this.SelectedTag)
-        .subscribe(
-          (data) => this.articles = data['articles'],
-          (error) => this.router.navigate(['/404'])
-        );
-    } else {
-      this.apiService.getArticles()
-        .subscribe(
-          (data) => this.articles = data['articles'],
-          (error) => this.router.navigate(['/404'])
-        );
-    }
+    this.retreiveArticles();
   }
 
   ngOnChanges(changes: SimpleChanges) {
     this.articles = null;
+    this.retreiveArticles();
+  }
+
+  loadPage(pageNumber: number) {
+    // this.articles = null;
+    this.retreiveArticles(pageNumber);
+
+  }
+
+  retreiveArticles(pageNumber: number = 1) {
+    if (this.pageNumber === pageNumber && this.pageNumber !== 1) {
+      return;
+    }
+    this.pageNumber = pageNumber;
     if ( !!this.SelectedTag ) {
-      this.apiService.getArticlesByTag(this.SelectedTag)
+      this.apiService.getArticlesByTag(this.SelectedTag, pageNumber)
         .subscribe(
-          (data) => this.articles = data['articles'],
+          (data) => {
+            this.articles = data['articles'];
+            this.articlesCount = data['articlesCount'];
+          },
           (error) => this.router.navigate(['/404'])
         );
     } else {
-      this.apiService.getArticles()
+      this.apiService.getArticles(pageNumber)
         .subscribe(
-          (data) => this.articles = data['articles'],
+          (data) => {
+            this.articles = data['articles'];
+            this.articlesCount = data['articlesCount'];
+          },
           (error) => this.router.navigate(['/404'])
         );
     }

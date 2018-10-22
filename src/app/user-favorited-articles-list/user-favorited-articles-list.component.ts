@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ApiService } from '../api.service';
 import { IArticle } from 'src/Models/Article.model';
@@ -10,13 +11,40 @@ import { IArticle } from 'src/Models/Article.model';
 })
 export class UserFavoritedArticlesListComponent implements OnInit {
   articles: IArticle[];
+  articlesCount: number;
+  pageNumber = 1;
   @Input() username: string;
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
-    this.apiService.getFavoritedArticlesByUser(this.username)
+    this.apiService.getFavoritedArticlesByUser(this.username, this.pageNumber)
       .subscribe(
-        (data) => this.articles = data['articles'],
+        (data) => {
+          this.articles = data['articles'];
+          this.articlesCount = data['articlesCount'];
+        },
+        (error) => {
+          console.log(error);
+          this.router.navigate(['/404']);
+        }
+      );
+  }
+
+  loadPage(pageNumber: number) {
+    if (this.pageNumber === pageNumber) {
+      return;
+    }
+    this.apiService.getFavoritedArticlesByUser(this.username, pageNumber)
+      .subscribe(
+        (data) => {
+          this.articles = data['articles'];
+          this.articlesCount = data['articlesCount'];
+          this.pageNumber = pageNumber;
+        },
+        (error) => {
+          console.log(error);
+          this.router.navigate(['/404']);
+        }
       );
   }
 
